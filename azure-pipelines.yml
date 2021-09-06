@@ -36,17 +36,17 @@ stages:
           publishTestResults: true
       - template: '.pipelines/.templates/publish.codecoverage.results.yml'
 
-  - stage: 'MutationTests'
-    jobs:
-    - job: 'RunMutationTests'
-      steps:
-      - task: PowerShell@2
-        inputs:
-          filePath: '.pipelines/.scripts/run.mutation.tests.ps1'
-          arguments: '$(System.DefaultWorkingDirectory)/mutation-tests'
-      - template: '.pipelines/.templates/publish.mutation.test.results.yml'
-        parameters:
-          reportPattern: '**/mutation-tests/mutation-report.html'
+  #- stage: 'MutationTests'
+  #  jobs:
+  #  - job: 'RunMutationTests'
+  #    steps:
+  #    - task: PowerShell@2
+  #      inputs:
+  #        filePath: '.pipelines/.scripts/run.mutation.tests.ps1'
+  #        arguments: '$(System.DefaultWorkingDirectory)/mutation-tests'
+  #    - template: '.pipelines/.templates/publish.mutation.test.results.yml'
+  #      parameters:
+  #        reportPattern: '**/mutation-tests/mutation-report.html'
 
   - stage: 'PackAndPublishTool'
     jobs:
