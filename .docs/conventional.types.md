@@ -1,4 +1,5 @@
 # Conventional Commit Types
+
 Please review the conventional commit types below as these are the only acceptable types to use in commit messages.
 
 build

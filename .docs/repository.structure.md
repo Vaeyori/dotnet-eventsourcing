@@ -1,7 +1,9 @@
 # Repository Structure Guidelines
+
 This repository follows the screaming architecture approach: the repository structure should scream at the user as to what the application does with a minimum amount of effort to understand it.
 
 ## Structure Diagram
+
 - root
   - .docs
   - .git
