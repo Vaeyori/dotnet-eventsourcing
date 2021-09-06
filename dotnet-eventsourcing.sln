@@ -47,7 +47,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".templates", ".templates", 
 		.pipelines\.templates\repository.tag.yml = .pipelines\.templates\repository.tag.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{15B5E352-1E8F-4722-B8C3-61FBE02569C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vaeyori.EventSourcing.Abstractions", "src\Vaeyori.EventSourcing.Abstractions\Vaeyori.EventSourcing.Abstractions.csproj", "{089CA483-A5E6-4AA8-9F32-59D8563B9140}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vaeyori.EventSourcing.Abstractions.UnitTests", "src\Vaeyori.EventSourcing.Abstractions.UnitTests\Vaeyori.EventSourcing.Abstractions.UnitTests.csproj", "{5E030A97-868A-4C7E-8DF4-391E34005D17}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{089CA483-A5E6-4AA8-9F32-59D8563B9140}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{089CA483-A5E6-4AA8-9F32-59D8563B9140}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{089CA483-A5E6-4AA8-9F32-59D8563B9140}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{089CA483-A5E6-4AA8-9F32-59D8563B9140}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E030A97-868A-4C7E-8DF4-391E34005D17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E030A97-868A-4C7E-8DF4-391E34005D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E030A97-868A-4C7E-8DF4-391E34005D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E030A97-868A-4C7E-8DF4-391E34005D17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
@@ -58,6 +78,8 @@ Global
 		{2E493A2C-2C69-4896-B596-2EC3A8500E0B} = {4A7B42E1-FE9B-4135-B0AD-C21E25520ED3}
 		{5E6E1ACF-7B45-47BE-A71A-C85AC8B0F18E} = {2E493A2C-2C69-4896-B596-2EC3A8500E0B}
 		{BD1514EA-CB67-4E6B-9BAA-3BA1469066B6} = {2E493A2C-2C69-4896-B596-2EC3A8500E0B}
+		{089CA483-A5E6-4AA8-9F32-59D8563B9140} = {15B5E352-1E8F-4722-B8C3-61FBE02569C2}
+		{5E030A97-868A-4C7E-8DF4-391E34005D17} = {15B5E352-1E8F-4722-B8C3-61FBE02569C2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {666272B1-E8BD-417E-990D-C179E0E4857F}

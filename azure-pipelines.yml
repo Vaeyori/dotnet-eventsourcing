@@ -1,0 +1,77 @@
+name: $(Build.BuildNumber)
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+  
+stages:
+  - stage: 'Versioning'
+    jobs:
+    - job: 'GitVersion'
+      condition: ne(variables['Build.Reason'], 'PullRequest')
+      steps:
+      - template: '.pipelines/.templates/generate.version.yml'
+
+  - stage: 'Build'
+    jobs:
+    - job: 'BuildJob'
+      condition: eq(variables['Build.Reason'], 'PullRequest')
+      steps:
+      - task: DotNetCoreCLI@2
+        inputs:
+          command: 'build'
+          projects: 'dotnet-eventsourcing.sln'
+
+  - stage: 'UnitTests'
+    jobs:
+    - job: 'RunUnitTests'
+      steps:
+      - task: DotNetCoreCLI@2
+        inputs:
+          command: 'test'
+          projects: 'dotnet-eventsourcing.sln'
+          arguments: '/p:CollectCoverage=true /p:IncludeTestAssembly=false /p:CoverletOutputFormat="json%2ccobertura" /p:CoverletOutput=$(System.DefaultWorkingDirectory)/codecoverage/ /p:MergeWith=$(System.DefaultWorkingDirectory)/codecoverage/coverage.json /p:maxcpucount=1 /p:Exclude="[xunit.*]*%2c[StackExchange.*]*"'
+          publishTestResults: true
+      - template: '.pipelines/.templates/publish.codecoverage.results.yml'
+
+  - stage: 'MutationTests'
+    jobs:
+    - job: 'RunMutationTests'
+      steps:
+      - task: PowerShell@2
+        inputs:
+          filePath: '.pipelines/.scripts/run.mutation.tests.ps1'
+          arguments: '$(System.DefaultWorkingDirectory)/mutation-tests'
+      - template: '.pipelines/.templates/publish.mutation.test.results.yml'
+        parameters:
+          reportPattern: '**/mutation-tests/mutation-report.html'
+
+  - stage: 'PackAndPublishTool'
+    jobs:
+    - job: 'PackAndPublishToolNuget'
+      condition: ne(variables['Build.Reason'], 'PullRequest')
+      steps:
+      - task: DotNetCoreCLI@2
+        inputs:
+          command: 'restore'
+          projects: '**/*.sln'
+          feedsToUse: 'select'
+          vstsFeed: '17a33635-d21a-4130-820b-02b3bd7628bc'
+      - task: DotNetCoreCLI@2
+        inputs:
+          command: 'build'
+          projects: 'dotnet-eventsourcing.sln'
+      - task: DotNetCoreCLI@2        
+        inputs:
+          command: 'pack'
+          packagesToPack: '**/Vaeyori.EventSourcing.Abstractions.csproj'
+          includesymbols: true
+          versioningScheme: 'byBuildNumber'
+      - task: NuGetCommand@2
+        inputs:
+          command: 'push'
+          packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+          nuGetFeedType: 'external'
+          publishFeedCredentials: 'NuGet.org'
