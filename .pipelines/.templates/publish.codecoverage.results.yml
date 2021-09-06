@@ -1,0 +1,24 @@
+parameters:
+- name: codeCoverageTool
+  type: string
+  default: 'Cobertura'
+
+- name: summaryFileLocation
+  type: string
+  default: '**/codecoverage/coverage.cobertura.xml'
+
+- name: reportDirectory
+  type: string
+  default: '**/codecoverage'
+
+- name: failIfCoverageEmpty
+  type: boolean
+  default: true
+
+steps:
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: ${{ parameters.codeCoverageTool }}
+    summaryFileLocation: ${{ parameters.summaryFileLocation }}
+    reportDirectory: ${{ parameters.reportDirectory }}
+    failIfCoverageEmpty: ${{ parameters.failIfCoverageEmpty }}

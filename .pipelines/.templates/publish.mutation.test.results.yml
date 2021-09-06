@@ -1,0 +1,9 @@
+parameters:
+- name: reportPattern
+  type: string
+  default: '**/mutation-report.html'
+
+steps:
+- task: PublishMutationReport@0
+  inputs:
+    reportPattern: ${{ parameters.reportPattern }}

@@ -1,0 +1,24 @@
+parameters:
+- name: testResultsFormat
+  type: string
+  default: 'XUnit'
+
+- name: testResultsFiles
+  type: string
+  default: '**/testresults/test*.xml'
+
+- name: mergeTestResults
+  type: boolean
+  default: true
+
+- name: failTaskOnFailedTests
+  type: boolean
+  default: true
+
+steps:
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: ${{ parameters.testResultsFormat }}
+    testResultsFiles: ${{ parameters.testResultsFiles }}
+    mergeTestResults: ${{ parameters.mergeTestResults }}
+    failTaskOnFailedTests: ${{ parameters.failTaskOnFailedTests }}

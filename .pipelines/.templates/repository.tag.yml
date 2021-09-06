@@ -1,0 +1,16 @@
+parameters:
+- name: userName
+  type: string
+  default: 'Build Service'
+
+- name: userEmail
+  type: string
+  default: 'pipeline@build.service.com'
+
+steps:
+- script: |
+    git config --global user.name "${{ parameters.userName }}"
+    git config --global user.email "${{ parameters.userEmail }}"
+    git tag $(Build.BuildNumber)
+    git push origin $(Build.BuildNumber)
+  workingDirectory: $(Build.SourcesDirectory)

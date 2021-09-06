@@ -1,0 +1,26 @@
+parameters:
+- name: containerName
+  type: string
+  default: 'test-container'
+
+- name: containerLabel
+  type: string
+  default: 'test=true'
+
+- name: source
+  type: string
+  default: '/testresults'
+
+- name: destination
+  type: string
+  default: '/testresults'
+
+steps:
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      export id=$(docker images --filter "label=${{ parameters.containerLabel }}" -q | head -1)
+      docker create --name ${{ parameters.containerName }} $id
+      docker cp ${{ parameters.containerName }}:${{ parameters.source }} ./${{ parameters.destination }}
+      docker rm ${{ parameters.containerName }}
