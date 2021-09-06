@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		contributing.md = contributing.md
+		GitVersion.yml = GitVersion.yml
 		license.md = license.md
 	EndProjectSection
 EndProject
@@ -29,6 +30,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{4FA2
 		.config\dotnet-tools.json = .config\dotnet-tools.json
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".pipelines", ".pipelines", "{2E493A2C-2C69-4896-B596-2EC3A8500E0B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".scripts", ".scripts", "{5E6E1ACF-7B45-47BE-A71A-C85AC8B0F18E}"
+	ProjectSection(SolutionItems) = preProject
+		.pipelines\.scripts\run.mutation.tests.ps1 = .pipelines\.scripts\run.mutation.tests.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".templates", ".templates", "{BD1514EA-CB67-4E6B-9BAA-3BA1469066B6}"
+	ProjectSection(SolutionItems) = preProject
+		.pipelines\.templates\copy.from.container.yml = .pipelines\.templates\copy.from.container.yml
+		.pipelines\.templates\generate.version.yml = .pipelines\.templates\generate.version.yml
+		.pipelines\.templates\publish.codecoverage.results.yml = .pipelines\.templates\publish.codecoverage.results.yml
+		.pipelines\.templates\publish.mutation.test.results.yml = .pipelines\.templates\publish.mutation.test.results.yml
+		.pipelines\.templates\publish.test.results.yml = .pipelines\.templates\publish.test.results.yml
+		.pipelines\.templates\repository.tag.yml = .pipelines\.templates\repository.tag.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +55,9 @@ Global
 		{49C5C696-398F-4386-B7C0-327CFAED4A45} = {4A7B42E1-FE9B-4135-B0AD-C21E25520ED3}
 		{239B6791-6AAE-4CD5-8197-8EFE803B0A16} = {4A7B42E1-FE9B-4135-B0AD-C21E25520ED3}
 		{4FA298C7-06A0-477D-B1DB-A06AF4188F02} = {4A7B42E1-FE9B-4135-B0AD-C21E25520ED3}
+		{2E493A2C-2C69-4896-B596-2EC3A8500E0B} = {4A7B42E1-FE9B-4135-B0AD-C21E25520ED3}
+		{5E6E1ACF-7B45-47BE-A71A-C85AC8B0F18E} = {2E493A2C-2C69-4896-B596-2EC3A8500E0B}
+		{BD1514EA-CB67-4E6B-9BAA-3BA1469066B6} = {2E493A2C-2C69-4896-B596-2EC3A8500E0B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {666272B1-E8BD-417E-990D-C179E0E4857F}
