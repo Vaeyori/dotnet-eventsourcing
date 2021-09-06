@@ -1,31 +1,28 @@
-# .Net Conventional Commit Changelog
-.Net Conventional Commit Changelog is a generation tool to help automate the tedious task of changelog management.
+# .Net Event Sourcing
+
+.Net Event Sourcing is an open source library designed to apply immutable events to an entity. Using practices and principles from the Block Chain pattern we use a hashing algorithm to ensure that if the data is changed on the event we prevent it from being applied to the entity.
 
 ## Analytics
-![GitHub](https://img.shields.io/github/license/vaeYori/dotnet-conventionalcommit-changelog?label=License)
-![GitHub last commit](https://img.shields.io/github/last-commit/vaeyori/dotnet-conventionalcommit-changelog?label=Latest%20Commit)
-[![Build Status](https://dev.azure.com/vaeyori/Vaeyori/_apis/build/status/vaeyori.dotnet-conventionalcommit-changelog?branchName=main)](https://dev.azure.com/vaeyori/Vaeyori/_build/latest?definitionId=1&branchName=main) 
-![Azure DevOps tests](https://img.shields.io/azure-devops/tests/vaeyori/Vaeyori/1?label=Test%20Results)
-![Azure DevOps coverage](https://img.shields.io/azure-devops/coverage/vaeyori/Vaeyori/1?label=Code%20Coverage)
-![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/vaeyori/dotnet-conventionalcommit-changelog?label=Version&sort=semver)
-![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/vaeyori/dotnet-conventionalcommit-changelog?label=Dependencies)
+
+![GitHub](https://img.shields.io/github/license/vaeyori/dotnet-eventsourcing?label=License)
+![GitHub last commit](https://img.shields.io/github/last-commit/vaeyori/dotnet-eventsourcing?label=Latest%20Commit)
+[![Build Status](https://dev.azure.com/vaeyori/Vaeyori/_apis/build/status/Vaeyori.dotnet-eventsourcing?branchName=main)](https://dev.azure.com/vaeyori/Vaeyori/_build/latest?definitionId=3&branchName=main)
+![Azure DevOps tests](https://img.shields.io/azure-devops/tests/vaeyori/Vaeyori/3?label=Test%20Results)
+![Azure DevOps coverage](https://img.shields.io/azure-devops/coverage/vaeyori/Vaeyori/3?label=Code%20Coverage)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/vaeyori/dotnet-eventsourcing?label=Version&sort=semver)
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/vaeyori/dotnet-eventsourcing?label=Dependencies)
 
 ## Usage
 
 ### Installation
-Install via command line by running the following command
 
-    dotnet tool install Vaeyori.ConventionalCommitChangelogGenerator
+Install via Package Manager
 
-Once installed you can access the application via the command line using the following command
-
-    conventionalcommit-changelog --help
-
-The help screen will appear providing you additional information on the available arguments that are required to be supplied.
+    Install-Package Vaeyori.EventSourcing.Abstractions
 
 ## Contribute
-Contributions are always welcome! Please read the [contribution guidelines](/contributing.md) first.
 
+Contributions are always welcome! Please read the [contribution guidelines](/contributing.md) first.
 
 ## License
 
